@@ -14,6 +14,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 load_dotenv()
+import django_on_heroku
+django_on_heroku.settings(locals())
 # https://dev.to/earthcomfy/django-how-to-keep-secrets-safe-with-python-dotenv-5811
 # These codes are used for the ease of deployment
 # dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
@@ -91,7 +93,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'twsbe.wsgi.application'
+WSGI_APPLICATION = 'trasia-watches-store.wsgi.application'
 
 
 # Database

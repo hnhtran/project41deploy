@@ -1,0 +1,1 @@
+web: gunicorn trasia-watches-store.wsgi
