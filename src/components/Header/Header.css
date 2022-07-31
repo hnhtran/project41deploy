@@ -1,0 +1,26 @@
+.header {
+    margin-top: 20px;
+    color: rgb(71, 41, 162);
+}
+.h1-header {
+    margin: 0px;
+    padding: 0px;
+}
+.reponsive-header {
+    visibility: hidden;
+    /* display: none; */
+}
+
+@media (max-width: 500px) {
+    .header {
+        margin-top: 0px;
+        align-items: center;
+    }
+    .h1-header {
+        display: none;
+    }
+    .reponsive-header{
+        visibility: visible;
+        margin-top: 5px;
+    }
+}

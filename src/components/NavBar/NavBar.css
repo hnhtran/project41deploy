@@ -1,0 +1,62 @@
+.icon{
+  width: 2.5em;
+  height: 2.5em;
+  margin: .25em;
+  text-decoration: none;
+}
+
+.icon:hover{
+  width: 2.75em;
+  height: 2.75em;
+}
+
+.navbar-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: #f79951; */
+  background-color: #e2bf97;
+}
+
+.icons{
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1em;
+}
+
+* {
+  font-family: 'Itim', cursive;
+  box-sizing: border-box;
+}
+
+.shop-name{
+  margin-left: 2em ;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 600px) {
+  .navbar-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: #f79951; */
+    background-color: #e2bf97;
+    width: 100%;
+  }
+
+  .icon{
+    width: 2em;
+    height: 2em;
+    margin: .2em;
+    text-decoration: none;
+  }
+  
+  .icon:hover{
+    width: 2.3em;
+    height: 2.3em;
+  }
+  .shop-name {
+    display: none;
+  }
+} 
