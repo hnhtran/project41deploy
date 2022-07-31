@@ -12,11 +12,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 from dotenv import load_dotenv
-from django.conf import settings
 import os
 load_dotenv()
-import django_on_heroku
-django_on_heroku.settings(locals())
 # https://dev.to/earthcomfy/django-how-to-keep-secrets-safe-with-python-dotenv-5811
 # These codes are used for the ease of deployment
 # dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
@@ -33,9 +30,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -72,7 +69,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 # 'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny']
 CORS_ORIGIN_ALLOW_ALL = True
@@ -82,7 +78,7 @@ ROOT_URLCONF = 'twsbe.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'build')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -95,7 +91,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'trasia-watches-store.wsgi.application'
+WSGI_APPLICATION = 'twsbe.wsgi.application'
 
 
 # Database
@@ -107,7 +103,6 @@ DATABASES = {
         'NAME': 'trasiastore',
     }
 }
-DATABASE = {}
 
 
 # Password validation
@@ -171,14 +166,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'build/static')
-]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'mediafiles')
+STATIC_URL = 'static/'
+# MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'mediafiles')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 MEDIA_URL = '/media/'
 
 # Default primary key field type
