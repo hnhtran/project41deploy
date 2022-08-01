@@ -145,6 +145,13 @@ def watches_detail(request, pk):
                     return Response(serializer.data, status=status.HTTP_204_NO_CONTENT)
             except:
                 print('An error occurred uploading file to S3')
+        print(request.data)
+        print(f'request.data.wimage: {request.data["wimage"]}')
+        serializer = WatchSerializer(watch, data=request.data, context={'request': request})
+        print(f'request.data: {request.data}')
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_204_NO_CONTENT)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
